@@ -35,13 +35,13 @@ gitlab-runner exec docker deploy --docker-volumes /var/run/docker.sock:/var/run/
 
 ## Modify the litecoin docker registry in the statefuleset using grep, awk and sed
 
-update the REPOSITORY_URL variable in the `.gitlab-ci.yml` and then run `./scripts/update-registry.sh`
+update the `REPOSITORY_URL` variable in the `.gitlab-ci.yml` and then run `./scripts/update-registry.sh`
 
 5.
 
-## Modify the litecoin docker registry in the statefulset using python
+## Modify the litecoin docker registry and tag in the statefulset using python
 
-update the REPOSITORY_URL variable in the `.gitlab-ci.yml` and then run `./scripts/update-registry.py`
+update the `REPOSITORY_URL` variable in the `.gitlab-ci.yml` and then run `./scripts/update-registry.py`
 
 6.
 

@@ -1,41 +1,42 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: litecoin
   labels:
     app: litecoin
+  name: litecoin
 spec:
-  serviceName: "litecoin"
+  replicas: 1
   selector:
     matchLabels:
       app: litecoin
-  replicas: 1
+  serviceName: litecoin
   template:
     metadata:
       labels:
         app: litecoin
     spec:
       containers:
-      - name: litecoin
-        image: wstewart90/litecoin:0.18.1
-        resources:
-          requests:
-            memory: 512Mi
-            cpu: 500m
-          limits:
-            memory: 1024Mi
-            cpu: 1000m
+      - image: wstewart90/litecoin:0.18.1
+        name: litecoin
         ports:
         - containerPort: 9333
           name: litecoind
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1024Mi
+          requests:
+            cpu: 500m
+            memory: 512Mi
         volumeMounts:
-        - name: data
-          mountPath: /home/litecoin
+        - mountPath: /home/litecoin
+          name: data
   volumeClaimTemplates:
   - metadata:
       name: data
     spec:
-      accessModes: [ "ReadWriteMany" ]
+      accessModes:
+      - ReadWriteMany
       resources:
         requests:
           storage: 1Gi

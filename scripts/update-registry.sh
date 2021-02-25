@@ -5,6 +5,11 @@ STATEFULESET='statefulset.yaml'
 
 function update_registry () {
   perl -i -pe "s|(image: )(.*litecoin)(:0.18.1)|\1${LITECOINREPO}\3|g" $STATEFULESET
+  echo $LITECOINREPO
 }
 
-update_registry
+function main() {
+  update_registry
+}
+
+main "$@"
