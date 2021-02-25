@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: litecoin
-        image: wstewart90/litecoin:latest
+        image: wstewart90/litecoin:0.18.1
         resources:
           requests:
             memory: 512Mi
