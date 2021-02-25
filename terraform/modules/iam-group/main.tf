@@ -25,5 +25,5 @@ resource "aws_iam_policy" "this" {
 
 resource "aws_iam_group_policy_attachment" "this" {
   group      = aws_iam_group.this.id
-  policy_arn = aws_iam_policy.this.id
+  policy_arn = aws_iam_policy.this.arn
 }
