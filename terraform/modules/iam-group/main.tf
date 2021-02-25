@@ -17,7 +17,13 @@ data "aws_iam_policy_document" "this" {
   }
 }
 
+resource "aws_iam_policy" "this" {
+  name        = var.name
+  description = "Allows group to assume role"
+  policy      = data.aws_iam_policy_document.this.json
+}
+
 resource "aws_iam_group_policy_attachment" "this" {
   group      = aws_iam_group.this.id
-  policy_arn = data.aws_iam_policy_document.this.id
+  policy_arn = data.aws_iam_policy.this.id
 }
