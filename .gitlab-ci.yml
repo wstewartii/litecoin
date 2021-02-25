@@ -1,0 +1,23 @@
+image: docker:latest
+
+variables:
+  REPOSITORY_URL: wstewart90/litecoin
+  VERSION: 0.18.1
+  DOCKER_HOST: 'unix:///var/run/docker.sock'
+
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  script:
+    - docker build --tag $REPOSITORY_URL:latest .
+    - docker tag $REPOSITORY_URL:latest $REPOSITORY_URL:$CI_COMMIT_REF_NAME
+    - docker push $REPOSITORY_URL:latest
+    - docker push $REPOSITORY_URL:$CI_COMMIT_REF_NAME
+
+deploy:
+  stage: deploy
+  script:
+    - kubectl apply -f statefulset.yaml
