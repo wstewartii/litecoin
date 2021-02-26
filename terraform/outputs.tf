@@ -9,12 +9,21 @@ output "user_name" {
 }
 output "group_arn" {
   description = "ARN of the IAM group"
-  value       = module.group.arn
+  value       = module.group.group_arn
 }
 
 output "group_name" {
   description = "Name of the IAM group"
-  value       = module.group.name
+  value       = module.group.group_name
+}
+output "group_policy_arn" {
+  description = "ARN of the IAM group"
+  value       = module.group.policy_arn
+}
+
+output "group_policy_name" {
+  description = "Name of the IAM group"
+  value       = module.group.policy_name
 }
 output "role_arn" {
   description = "ARN of the IAM role"
