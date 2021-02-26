@@ -37,7 +37,7 @@ gitlab-runner exec docker deploy --docker-volumes /var/run/docker.sock:/var/run/
 
 ## 4.
 
-### Modify the litecoin docker registry in the statefuleset using grep, awk and sed
+### Modify the litecoin docker registry in the statefuleset using grep, awk and perl
 
 update the `REPOSITORY_URL` variable in the `.gitlab-ci.yml` and then run [update-registry.sh](https://github.com/wstewartii/litecoin/blob/main/scripts/update-registry.sh)
 
